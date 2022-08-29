@@ -1,27 +1,29 @@
 package com.example.reactive.model;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+
+@Table(name = "message")
 public class Message {
     @Id
     private Long id;
-    private String data;
 
-    @Override
-    public String toString() {
-        return "Message{" +
-                "id=" + id +
-                ", data='" + data + '\'' +
-                '}';
-    }
+    private String message;
+
+    private LocalDateTime dateTime;
+
+    @JsonIgnore
+    private User user;
+
+    private String username;
 }
 
 

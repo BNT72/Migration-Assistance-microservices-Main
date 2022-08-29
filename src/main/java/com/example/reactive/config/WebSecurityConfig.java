@@ -41,8 +41,9 @@ public class WebSecurityConfig {
                 .securityContextRepository(securityContextRepository)
                 .httpBasic().disable()
                 .authorizeExchange()
-                .pathMatchers("/","/login","/favicon.ico").permitAll()
-                .pathMatchers("/controller").hasRole("ADMIN")
+                .pathMatchers("/all","/login","/favicon.ico").permitAll()
+//                .pathMatchers("/**","/favicon.ico").permitAll()
+                .pathMatchers("/controller").hasRole("ROLE_ADMIN")
                 .anyExchange().authenticated()
                 .and()
                 .build();

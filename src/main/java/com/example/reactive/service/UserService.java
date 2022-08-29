@@ -1,5 +1,6 @@
 package com.example.reactive.service;
 
+import com.example.reactive.model.User;
 import com.example.reactive.repo.UserRepo;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,5 +18,10 @@ public class UserService implements ReactiveUserDetailsService {
     @Override
     public Mono<UserDetails> findByUsername(String username) {
         return userRepo.findByUsername(username).cast(UserDetails.class);
+    }
+
+
+    public Mono<UserDetails> saveUser(User user) {
+        return userRepo.save(user).cast(UserDetails.class);
     }
 }

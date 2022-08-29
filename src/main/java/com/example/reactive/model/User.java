@@ -1,10 +1,7 @@
 package com.example.reactive.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -30,6 +28,8 @@ public class User implements UserDetails {
     private String password;
 
     private UserRole role;
+
+//    private List<Message> messages;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
