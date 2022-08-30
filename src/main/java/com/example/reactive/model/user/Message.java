@@ -1,4 +1,4 @@
-package com.example.reactive.model;
+package com.example.reactive.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
@@ -21,9 +21,11 @@ public class Message {
     private LocalDateTime dateTime;
 
     @JsonIgnore
-    private User user;
+    private Long userId;
 
     private String username;
+
+
 }
 
 

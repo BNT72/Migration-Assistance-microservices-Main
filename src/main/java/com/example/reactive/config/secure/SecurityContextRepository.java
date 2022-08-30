@@ -1,4 +1,4 @@
-package com.example.reactive.config;
+package com.example.reactive.config.secure;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

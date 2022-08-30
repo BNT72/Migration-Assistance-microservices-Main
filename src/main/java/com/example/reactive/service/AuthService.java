@@ -1,8 +1,8 @@
 package com.example.reactive.service;
 
-import com.example.reactive.config.JwtUtil;
-import com.example.reactive.model.User;
-import com.example.reactive.model.UserRole;
+import com.example.reactive.config.secure.JwtUtil;
+import com.example.reactive.model.user.User;
+import com.example.reactive.model.user.UserRole;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.example.reactive.service;
 
-import com.example.reactive.model.User;
+import com.example.reactive.model.user.User;
 import com.example.reactive.repo.UserRepo;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;

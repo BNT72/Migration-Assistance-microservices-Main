@@ -1,6 +1,6 @@
-package com.example.reactive.config;
+package com.example.reactive.config.secure;
 
-import com.example.reactive.model.User;
+import com.example.reactive.model.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -27,18 +27,17 @@ public class JwtUtil {
 
     public   Claims getClaimsFromToken(String token) {
         String key = Base64.getEncoder().encodeToString(secret.getBytes());
-
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
     }
 
     public boolean validateToken(String token) {
         return getClaimsFromToken(token)
                 .getExpiration()
-                .before(new Date());
+                .after(new Date());
     }
 
     public ResponseEntity generateToken(User user){
@@ -54,6 +53,7 @@ public class JwtUtil {
                 .setExpiration(expirationDate)
                 .signWith(Keys.hmacShaKeyFor(secret.getBytes()))
                 .compact();
+        System.out.println(jwt);
         return ResponseEntity.ok(new JwtResponse(jwt,
                 user.getId(),
                 user.getUsername(),

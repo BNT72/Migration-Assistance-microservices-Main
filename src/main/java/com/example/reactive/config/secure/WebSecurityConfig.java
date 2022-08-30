@@ -1,4 +1,4 @@
-package com.example.reactive.config;
+package com.example.reactive.config.secure;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
@@ -31,6 +31,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity httpSecurity){
         return httpSecurity
+                .cors().and()
                 .exceptionHandling()
                 .authenticationEntryPoint((exchange, ex) -> Mono.fromRunnable(() -> exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED)))
                 .accessDeniedHandler((exchange, ex) -> Mono.fromRunnable(() -> exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN)))
@@ -41,11 +42,11 @@ public class WebSecurityConfig {
                 .securityContextRepository(securityContextRepository)
                 .httpBasic().disable()
                 .authorizeExchange()
-                .pathMatchers("/all","/login","/favicon.ico").permitAll()
-//                .pathMatchers("/**","/favicon.ico").permitAll()
-                .pathMatchers("/controller").hasRole("ROLE_ADMIN")
+                .pathMatchers("/all","/login","/register","/favicon.ico","/controller/**","/map/**","/test/**").permitAll()
+                .pathMatchers("/**","/favicon.ico").permitAll()
                 .anyExchange().authenticated()
                 .and()
                 .build();
     }
+
 }

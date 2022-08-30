@@ -1,4 +1,4 @@
-package com.example.reactive.model;
+package com.example.reactive.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -29,7 +29,6 @@ public class User implements UserDetails {
 
     private UserRole role;
 
-//    private List<Message> messages;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

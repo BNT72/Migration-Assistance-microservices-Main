@@ -1,4 +1,4 @@
-package com.example.reactive.config;
+package com.example.reactive.config.secure;
 
 import io.jsonwebtoken.Claims;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;

@@ -1,6 +1,6 @@
-package com.example.reactive.config;
+package com.example.reactive.config.secure;
 
-import com.example.reactive.model.UserRole;
+import com.example.reactive.model.user.UserRole;
 
 public class JwtResponse {
     private String token;
