@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   eureka-server:
-    image: 'valzhanov/migration-assistance-reactive-server'
+    image: 'valzhanov/migration-assistance-reactive-server:v2'
     container_name: eureka-server
     ports:
       - "8083:8083"
@@ -9,7 +9,7 @@ services:
       - eureka.client.service-url.defaultZone=http://eureka-server:8083/eureka
 
   eureka-gateway:
-    image: 'valzhanov/migration-assistance-reactive-gateway'
+    image: 'valzhanov/migration-assistance-reactive-gateway:v2'
     container_name: eureka-gateway
     ports:
       - "8080:8080"
@@ -21,7 +21,7 @@ services:
       -  eureka-server
 
   eureka-user-service:
-    image: 'valzhanov/migration-assistance-reactive-user-service'
+    image: 'valzhanov/migration-assistance-reactive-user-service:v2'
     container_name: eureka-user-service
     ports:
       - "8084:8084"
@@ -41,7 +41,7 @@ services:
       - eureka-server
 
   eureka-testing-service:
-    image: 'valzhanov/migration-assistance-reactive-testing-service'
+    image: 'valzhanov/migration-assistance-reactive-testing-service:v2'
     container_name: eureka-testing-service
     ports:
       - "8087:8087"
@@ -51,7 +51,6 @@ services:
     environment:
       EUREKA.CLIENT.SERVICE-URL.DEFAULTZONE: http://eureka-server:8083/eureka
       MONGO.MIGRATION: /MigrationTest.json
-      MONGO.URL: mongodb://root1:root2@mongodb:27017/mongo?authSource=admin
       SPRING.DATA.MONGODB.URI: mongodb://root1:root2@mongodb:27017/mongo?authSource=admin
 
 
@@ -60,7 +59,7 @@ services:
       - eureka-server
 
   eureka-map-service:
-    image: 'valzhanov/migration-assistance-reactive-map-service'
+    image: 'valzhanov/migration-assistance-reactive-map-service:v2'
     container_name: eureka-map-service
     ports:
       - "8086:8086"
@@ -70,14 +69,13 @@ services:
     environment:
       EUREKA.CLIENT.SERVICE-URL.DEFAULTZONE: http://eureka-server:8083/eureka
       MONGO.MIGRATION: /migration/MigrationMap.json
-      MONGO.URL: mongodb://root1:root2@mongodb:27017/mongo?authSource=admin
       SPRING.DATA.MONGODB.URI: mongodb://root1:root2@mongodb:27017/mongo?authSource=admin
 
     links:
       - eureka-server
 
   eureka-client:
-    image: 'valzhanov/migration-assistance-cloud-reactive-client'
+    image: 'valzhanov/migration-assistance-cloud-reactive-client:v2'
     container_name: eureka-client
     ports:
       - "8081:8081"
